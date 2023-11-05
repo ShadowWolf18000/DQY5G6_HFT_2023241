@@ -10,13 +10,13 @@ namespace DQY5G6_HFT_2023241.Repository
 {
     public class GameDbContext : DbContext
     {
-        public DbSet<Game> Games{ get; set; }
+        public DbSet<Game> Games { get; set; }
         public DbSet<Developer> Developers { get; set; }
         public DbSet<Launcher> Launchers { get; set; }
 
         public GameDbContext()
         {
-            this.Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

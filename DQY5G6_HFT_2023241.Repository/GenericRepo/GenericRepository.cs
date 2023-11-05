@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DQY5G6_HFT_2023241.Repository;
 
 namespace DQY5G6_HFT_2023241.Repository
 {
@@ -11,7 +12,7 @@ namespace DQY5G6_HFT_2023241.Repository
         protected GameDbContext gameDbContext;
         public GenericRepository(GameDbContext ctx)
         {
-            this.gameDbContext = ctx;
+            gameDbContext = ctx;
         }
         public void Create(T item)
         {
