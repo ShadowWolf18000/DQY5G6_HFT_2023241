@@ -21,6 +21,8 @@ namespace DQY5G6_HFT_2023241.Models
         [Range(1965, 2023)]
         public int FoundingYear { get; set; }
 
+        public virtual ICollection<Game> Games { get; set; } 
+
         public Developer(string line)
         {
             var x = line.Split('#');

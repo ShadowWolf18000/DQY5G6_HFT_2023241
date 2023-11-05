@@ -29,7 +29,28 @@ namespace DQY5G6_HFT_2023241.Repository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<Developer>(developer => developer
+            .HasKey(d => d.DeveloperID));
+
+            modelBuilder.Entity<Launcher>()
+                .HasKey(l => l.LauncherID);
+
+            modelBuilder.Entity<Game>()
+            .HasKey(g => g.GameID);
+
+            modelBuilder.Entity<Game>()
+                .HasOne(g => g.Developer)
+                .WithMany(d => d.Games)
+                .HasForeignKey(g => g.DeveloperID);
+
+            modelBuilder.Entity<Game>()
+                .HasOne(g => g.Launcher)
+                .WithMany(l => l.Games)
+                .HasForeignKey(g => g.LauncherID);
+
+
+
+
         }
 
 

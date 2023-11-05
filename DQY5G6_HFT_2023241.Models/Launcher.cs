@@ -21,6 +21,8 @@ namespace DQY5G6_HFT_2023241.Models
         [StringLength(240)]
         public string Owner { get; set; }
 
+        public virtual ICollection<Game> Games { get; set; }
+
         public Launcher(string line)
         {
             var x = line.Split('#');
