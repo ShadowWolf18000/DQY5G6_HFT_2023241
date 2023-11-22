@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DQY5G6_HFT_2023241.Logic.Classes
+namespace DQY5G6_HFT_2023241.Logic
 {
     internal class DeveloperLogic
     {
