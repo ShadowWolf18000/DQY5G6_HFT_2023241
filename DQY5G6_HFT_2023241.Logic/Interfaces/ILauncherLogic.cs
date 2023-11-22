@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DQY5G6_HFT_2023241.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,10 @@ namespace DQY5G6_HFT_2023241.Logic.Interfaces
 {
     internal interface ILauncherLogic
     {
-
+        void Create(Launcher l);
+        void Delete(int id);
+        Launcher Read(int id);
+        IQueryable<Launcher> ReadAll();
+        void Update(Launcher l);
     }
 }
