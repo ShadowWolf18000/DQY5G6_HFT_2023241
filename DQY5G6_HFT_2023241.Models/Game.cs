@@ -33,7 +33,8 @@ namespace DQY5G6_HFT_2023241.Models
             Title = x[1];
             DeveloperID = Convert.ToInt32(x[2]);
             LauncherID = Convert.ToInt32(x[3]);
-            Rating = Convert.ToDouble(x[4]);
+            var y = x[4].Split('.');
+            Rating = Convert.ToInt32(y[0]) + Convert.ToDouble($"0,{y[1]}");
         }
         public Game()
         {

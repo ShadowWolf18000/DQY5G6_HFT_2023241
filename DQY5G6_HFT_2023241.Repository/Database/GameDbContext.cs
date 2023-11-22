@@ -16,12 +16,12 @@ namespace DQY5G6_HFT_2023241.Repository
 
         public GameDbContext()
         {
-            Database.EnsureCreated();
+            this.Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured != true)
+            if (optionsBuilder.IsConfigured != true)
             {
                 optionsBuilder.UseLazyLoadingProxies().UseInMemoryDatabase("Game");
             }
