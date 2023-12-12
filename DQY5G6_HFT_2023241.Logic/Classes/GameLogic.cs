@@ -21,8 +21,8 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Create(Game game)
         {
-            if (game == null)
-                throw new ArgumentNullException("Game cannot be null!");
+            if (game.GetType().GetProperties().Any(x => x.GetValue(game) == null))
+                throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
             else
                 repository.Create(game);
         }
@@ -50,8 +50,8 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Update(Game game)
         {
-            if (game == null)
-                throw new ArgumentNullException("Game cannot be null!");
+            if (game.GetType().GetProperties().Any(x => x.GetValue(game) == null))
+                throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
             else
                 repository.Update(game);
         }

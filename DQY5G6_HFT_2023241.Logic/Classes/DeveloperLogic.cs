@@ -21,8 +21,8 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Create(Developer dev)
         {
-            if (dev == null)
-                throw new ArgumentNullException("Developer cannot be null.");
+            if (dev.GetType().GetProperties().Any(x => x.GetValue(dev) == null))
+                throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
             else
                 repository.Create(dev);
         }
@@ -50,10 +50,10 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Update(Developer dev)
         {
-            if (dev == null)
-                throw new ArgumentException("Developer cannot be null!");
+            if (dev.GetType().GetProperties().Any(x => x.GetValue(dev) == null))
+                throw new ArgumentNullException("A property in the object is null, therefore it cannot be updated!");
             else
-            repository.Update(dev);
+                repository.Update(dev);
         }
         
 
