@@ -23,20 +23,21 @@ namespace DQY5G6_HFT_2023241.Repository
         {
             if (optionsBuilder.IsConfigured != true)
             {
-                optionsBuilder.UseLazyLoadingProxies().UseInMemoryDatabase("Game");
+                optionsBuilder.UseInMemoryDatabase("Game").UseLazyLoadingProxies();
             }
+            base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Developer>(developer => developer
-            .HasKey(d => d.DeveloperID));
+            //modelBuilder.Entity<Developer>(developer => developer
+            //.HasKey(d => d.DeveloperID));
 
-            modelBuilder.Entity<Launcher>()
-                .HasKey(l => l.LauncherID);
+            //modelBuilder.Entity<Launcher>()
+            //    .HasKey(l => l.LauncherID);
 
-            modelBuilder.Entity<Game>()
-            .HasKey(g => g.GameID);
+            //modelBuilder.Entity<Game>()
+            //.HasKey(g => g.GameID);
 
             modelBuilder.Entity<Game>()
                 .HasOne(g => g.Developer)
@@ -114,6 +115,8 @@ namespace DQY5G6_HFT_2023241.Repository
                 new Developer("9#Ubisoft#1986"),
                 new Developer("10#343 Industries#2007")
             });
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
