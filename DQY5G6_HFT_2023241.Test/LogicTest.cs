@@ -10,7 +10,7 @@ using System.Linq;
 namespace DQY5G6_HFT_2023241.Test
 {
     [TestFixture]
-    public class DevLogicTest
+    public class LogicTest
     {
         DeveloperLogic devLogic;
         GameLogic gameLogic;
