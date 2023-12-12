@@ -57,7 +57,7 @@ namespace DQY5G6_HFT_2023241.Logic
         }
 
         // Összes játék kilistázása adott fejlesztőtől
-        public IEnumerable<Game> GetGamesByDeveloper(string developerName)
+        public IEnumerable<Game> GamesByDeveloper(string developerName)
         {
             return repository.ReadAll()
                 .Where(g => g.Developer.DeveloperName == developerName)
@@ -65,7 +65,7 @@ namespace DQY5G6_HFT_2023241.Logic
         }
 
         // Legkedveltebb játékok listája egy adott fejlesztő alapján, egy adott platformon: rating 9.5 vagy nagyobb
-        public IEnumerable<Game> GetTopGamesByDeveloperOnPlatform(string developerName, string launcherName)
+        public IEnumerable<Game> TopGamesByDeveloperOnPlatform(string developerName, string launcherName)
         {
             return repository.ReadAll()
                 .Where(g => g.Developer.DeveloperName == developerName)
@@ -76,7 +76,7 @@ namespace DQY5G6_HFT_2023241.Logic
         }
 
         // Összes játék egy bizonyos értékelési intervallumon belül, egy adott fejlesztőtől
-        public IEnumerable<Game> GetGamesByRatingRange(double minRating, double maxRating, string developerName)
+        public IEnumerable<Game> GamesByRatingRange(double minRating, double maxRating, string developerName)
         {
             if (minRating < 0.0 || maxRating > 10.0)
                 throw new ArgumentOutOfRangeException();
@@ -87,7 +87,7 @@ namespace DQY5G6_HFT_2023241.Logic
         }
 
         // Egy fejlesztő különböző játékainak Launcherei
-        public IEnumerable<Launcher> GetLaunchersForDeveloper(string devName)
+        public IEnumerable<Launcher> LaunchersForDeveloper(string devName)
         {
             return repository.ReadAll()
                 .Where(g => g.Developer.DeveloperName == devName)

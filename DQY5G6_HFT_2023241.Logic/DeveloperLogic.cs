@@ -58,7 +58,7 @@ namespace DQY5G6_HFT_2023241.Logic
         
 
         // Összes fejlesztő kilistázása, akik fejlesztettek egy adott Launcherre
-        public IEnumerable<Developer> GetDevelopersByLauncher(string launcherName)
+        public IEnumerable<Developer> DevelopersByLauncher(string launcherName)
         {
             return repository.ReadAll()
                 .Where(d => d.Games.Any(g => g.Launcher.LauncherName == launcherName))

@@ -175,37 +175,37 @@ namespace DQY5G6_HFT_2023241.Test
         }
 
         [Test]
-        public void GetGamesByDeveloperTest()
+        public void GamesByDeveloperTest()
         {
-            var games = gameLogic.GetGamesByDeveloper("DeveloperD");
+            var games = gameLogic.GamesByDeveloper("DeveloperD");
             Assert.That(games.Count() == 2);
         }
 
         [Test]
-        public void GetTopGamesByDeveloperOnPlatformTest()
+        public void TopGamesByDeveloperOnPlatformTest()
         {
-            var games = gameLogic.GetTopGamesByDeveloperOnPlatform("DeveloperD", "LauncherD");
+            var games = gameLogic.TopGamesByDeveloperOnPlatform("DeveloperD", "LauncherD");
             Assert.That(games.Count() == 1);
         }
 
         [Test]
-        public void GetGamesByRatingRangeTest()
+        public void GamesByRatingRangeTest()
         {
-            var games = gameLogic.GetGamesByRatingRange(5.0, 9.0,"DeveloperD");
+            var games = gameLogic.GamesByRatingRange(5.0, 9.0,"DeveloperD");
             Assert.That(games.Count() == 1);
         }
 
         [Test]
-        public void GetLaunchersForDeveloperTest()
+        public void LaunchersForDeveloperTest()
         {
-            var launchers = gameLogic.GetLaunchersForDeveloper("DeveloperA");
+            var launchers = gameLogic.LaunchersForDeveloper("DeveloperA");
             Assert.That(launchers.Count() == 1);
         }
 
         [Test]
-        public void GetDevelopersByLauncherTest()
+        public void DevelopersByLauncherTest()
         {
-            var developers = devLogic.GetDevelopersByLauncher("LauncherD");
+            var developers = devLogic.DevelopersByLauncher("LauncherD");
             Assert.That(developers.Count() == 1);
         }
 

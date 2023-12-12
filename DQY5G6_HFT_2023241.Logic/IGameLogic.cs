@@ -14,9 +14,9 @@ namespace DQY5G6_HFT_2023241.Logic
         Game Read(int id);
         IQueryable<Game> ReadAll();
         void Update(Game game);
-        IEnumerable<Game> GetGamesByDeveloper(string developerName);
-        IEnumerable<Game> GetTopGamesByDeveloperOnPlatform(string developerName, string launcherName);
-        IEnumerable<Game> GetGamesByRatingRange(double minRating, double maxRating, string developerName);
-        IEnumerable<Launcher> GetLaunchersForDeveloper(string devName);
+        IEnumerable<Game> GamesByDeveloper(string developerName);
+        IEnumerable<Game> TopGamesByDeveloperOnPlatform(string developerName, string launcherName);
+        IEnumerable<Game> GamesByRatingRange(double minRating, double maxRating, string developerName);
+        IEnumerable<Launcher> LaunchersForDeveloper(string devName);
     }
 }
