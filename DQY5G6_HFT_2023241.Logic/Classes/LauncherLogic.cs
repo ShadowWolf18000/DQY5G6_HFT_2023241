@@ -18,7 +18,7 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Create(Launcher l)
         {
-            if (l.GetType().GetProperties().Any(x => x.GetValue(l) == null))
+            if (l.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(l) == null))
                 throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
             else
                 repository.Create(l);
@@ -47,7 +47,7 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Update(Launcher l)
         {
-            if (l.GetType().GetProperties().Any(x => x.GetValue(l) == null))
+            if (l.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(l) == null))
                 throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
             else
                 repository.Update(l);

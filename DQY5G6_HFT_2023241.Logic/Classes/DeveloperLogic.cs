@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DQY5G6_HFT_2023241.Logic
 {
-    internal class DeveloperLogic : IDeveloperLogic
+    public class DeveloperLogic : IDeveloperLogic
     {
         IRepository<Developer> repository;
 
@@ -21,7 +21,7 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Create(Developer dev)
         {
-            if (dev.GetType().GetProperties().Any(x => x.GetValue(dev) == null))
+            if (dev.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(dev) == null))
                 throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
             else
                 repository.Create(dev);
@@ -50,19 +50,12 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Update(Developer dev)
         {
-            if (dev.GetType().GetProperties().Any(x => x.GetValue(dev) == null))
+            if (dev.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(dev) == null))
                 throw new ArgumentNullException("A property in the object is null, therefore it cannot be updated!");
             else
                 repository.Update(dev);
         }
         
-
-        // Egy fejlesztő különböző játékainak Launcherei
-        public IEnumerable<Launcher> GetLaunchersForDeveloper(string devName)
-        {
-            return repository.ReadAll().
-                SelectMany(e => e.Games).Select(e => e.Launcher).Distinct();
-        }
 
         // Összes fejlesztő kilistázása, akik fejlesztettek egy adott Launcherre
         public IEnumerable<Developer> GetDevelopersByLauncher(string launcherName)
@@ -71,6 +64,5 @@ namespace DQY5G6_HFT_2023241.Logic
                 .Where(d => d.Games.Any(g => g.Launcher.LauncherName == launcherName))
                 .ToList();
         }
-
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DQY5G6_HFT_2023241.Logic
 {
-    internal class GameLogic : IGameLogic
+    public class GameLogic : IGameLogic
     {
         IRepository<Game> repository;
 
@@ -21,7 +21,7 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Create(Game game)
         {
-            if (game.GetType().GetProperties().Any(x => x.GetValue(game) == null))
+            if (game.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(game) == null))
                 throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
             else
                 repository.Create(game);
@@ -50,7 +50,7 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Update(Game game)
         {
-            if (game.GetType().GetProperties().Any(x => x.GetValue(game) == null))
+            if (game.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(game) == null))
                 throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
             else
                 repository.Update(game);
@@ -64,20 +64,35 @@ namespace DQY5G6_HFT_2023241.Logic
                 .ToList();
         }
 
-        // Legkedveltebb játékok listája egy adott fejlesztő alapján: rating 9.5 vagy nagyobb
-        public IEnumerable<Game> GetTopGamesByDeveloper(string developerName)
+        // Legkedveltebb játékok listája egy adott fejlesztő alapján, egy adott platformon: rating 9.5 vagy nagyobb
+        public IEnumerable<Game> GetTopGamesByDeveloperOnPlatform(string developerName, string launcherName)
         {
-            return GetGamesByDeveloper(developerName)
-                .Where(g => g.Rating >= 9.5)
+            return repository.ReadAll()
+                .Where(g => g.Developer.DeveloperName == developerName)
+                .ToList()
+                .Where(g => g.Rating >= 9.5 && g.Launcher.LauncherName == launcherName)
                 .OrderByDescending(g => g.Rating)
                 .ToList();
         }
 
-        // Összes játék kilistázása adott értékelési tartománnyal
-        public IEnumerable<Game> GetGamesByRatingRange(double minRating, double maxRating)
+        // Összes játék egy bizonyos értékelési intervallumon belül, egy adott fejlesztőtől
+        public IEnumerable<Game> GetGamesByRatingRange(double minRating, double maxRating, string developerName)
+        {
+            if (minRating < 0.0 || maxRating > 10.0)
+                throw new ArgumentOutOfRangeException();
+            else
+                return repository.ReadAll()
+                    .Where(g => g.Rating >= minRating && g.Rating <= maxRating && g.Developer.DeveloperName == developerName)
+                    .ToList();
+        }
+
+        // Egy fejlesztő különböző játékainak Launcherei
+        public IEnumerable<Launcher> GetLaunchersForDeveloper(string devName)
         {
             return repository.ReadAll()
-                .Where(g => g.Rating >= minRating && g.Rating <= maxRating)
+                .Where(g => g.Developer.DeveloperName == devName)
+                .Select(g => g.Launcher)
+                .Distinct()
                 .ToList();
         }
     }
