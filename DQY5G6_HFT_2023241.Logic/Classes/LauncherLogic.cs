@@ -18,17 +18,26 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Create(Launcher l)
         {
-            repository.Create(l);
+            if (l == null)
+                throw new ArgumentNullException("Launcher cannot be null");
+            else
+                repository.Create(l);
         }
 
         public void Delete(int id)
         {
-            repository.Delete(id);
+            if (id < 0)
+                throw new ArgumentOutOfRangeException("id");
+            else
+                repository.Delete(id);
         }
 
         public Launcher Read(int id)
         {
-            return repository.Read(id);
+            if (id < 0)
+                throw new ArgumentOutOfRangeException("id");
+            else
+                return repository.Read(id);
         }
 
         public IQueryable<Launcher> ReadAll()
@@ -38,10 +47,10 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Update(Launcher l)
         {
-            repository.Update(l);
+            if (l == null)
+                throw new ArgumentNullException("Launcher cannot be null.");
+            else
+                repository.Update(l);
         }
-
-        
-
     }
 }

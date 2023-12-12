@@ -21,17 +21,26 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Create(Developer dev)
         {
-            repository.Create(dev);
+            if (dev == null)
+                throw new ArgumentNullException("Developer cannot be null.");
+            else
+                repository.Create(dev);
         }
 
         public void Delete(int id)
         {
-            repository.Delete(id);
+            if (id < 0)
+                throw new ArgumentOutOfRangeException("id");
+            else
+                repository.Delete(id);
         }
 
         public Developer Read(int id)
         {
-            return repository.Read(id);
+            if (id < 0)
+                throw new ArgumentOutOfRangeException("id");
+            else
+                return repository.Read(id);
         }
 
         public IQueryable<Developer> ReadAll()
@@ -41,6 +50,9 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Update(Developer dev)
         {
+            if (dev == null)
+                throw new ArgumentException("Developer cannot be null!");
+            else
             repository.Update(dev);
         }
         

@@ -21,17 +21,26 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Create(Game game)
         {
-            repository.Create(game);
+            if (game == null)
+                throw new ArgumentNullException("Game cannot be null!");
+            else
+                repository.Create(game);
         }
 
         public void Delete(int id)
         {
-            repository.Delete(id);
+            if (id < 0)
+                throw new ArgumentOutOfRangeException("id");
+            else
+                repository.Delete(id);
         }
 
         public Game Read(int id)
         {
-            return repository.Read(id);
+            if (id < 0)
+                throw new ArgumentOutOfRangeException("id");
+            else
+                return repository.Read(id);
         }
 
         public IQueryable<Game> ReadAll()
@@ -41,7 +50,10 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Update(Game game)
         {
-            repository.Update(game);
+            if (game == null)
+                throw new ArgumentNullException("Game cannot be null!");
+            else
+                repository.Update(game);
         }
 
         // Összes játék kilistázása adott fejlesztőtől
