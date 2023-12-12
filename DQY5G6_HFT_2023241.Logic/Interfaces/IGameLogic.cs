@@ -14,5 +14,8 @@ namespace DQY5G6_HFT_2023241.Logic
         Game Read(int id);
         IQueryable<Game> ReadAll();
         void Update(Game game);
+        IEnumerable<Game> GetGamesByDeveloper(string developerName);
+        IEnumerable<Game> GetTopGamesByDeveloper(string developerName);
+        IEnumerable<Game> GetGamesByRatingRange(double minRating, double maxRating);
     }
 }

@@ -14,5 +14,7 @@ namespace DQY5G6_HFT_2023241.Logic
         Developer Read(int id);
         IQueryable<Developer> ReadAll();
         void Update(Developer dev);
+        IEnumerable<Launcher> GetLaunchersForDeveloper(string devName);
+        IEnumerable<Developer> GetDevelopersByLauncher(string launcherName);
     }
 }

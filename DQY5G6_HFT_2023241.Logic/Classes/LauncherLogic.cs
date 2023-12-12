@@ -1,6 +1,7 @@
 ﻿using DQY5G6_HFT_2023241.Models;
 using DQY5G6_HFT_2023241.Repository;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -39,5 +40,8 @@ namespace DQY5G6_HFT_2023241.Logic
         {
             repository.Update(l);
         }
+
+        
+
     }
 }

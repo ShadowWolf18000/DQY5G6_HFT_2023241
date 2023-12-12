@@ -1,5 +1,7 @@
 ﻿using DQY5G6_HFT_2023241.Models;
 using DQY5G6_HFT_2023241.Repository;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +42,31 @@ namespace DQY5G6_HFT_2023241.Logic
         public void Update(Game game)
         {
             repository.Update(game);
+        }
+
+        // Összes játék kilistázása adott fejlesztőtől
+        public IEnumerable<Game> GetGamesByDeveloper(string developerName)
+        {
+            return repository.ReadAll()
+                .Where(g => g.Developer.DeveloperName == developerName)
+                .ToList();
+        }
+
+        // Legkedveltebb játékok listája egy adott fejlesztő alapján: rating 9.5 vagy nagyobb
+        public IEnumerable<Game> GetTopGamesByDeveloper(string developerName)
+        {
+            return GetGamesByDeveloper(developerName)
+                .Where(g => g.Rating >= 9.5)
+                .OrderByDescending(g => g.Rating)
+                .ToList();
+        }
+
+        // Összes játék kilistázása adott értékelési tartománnyal
+        public IEnumerable<Game> GetGamesByRatingRange(double minRating, double maxRating)
+        {
+            return repository.ReadAll()
+                .Where(g => g.Rating >= minRating && g.Rating <= maxRating)
+                .ToList();
         }
     }
 }
