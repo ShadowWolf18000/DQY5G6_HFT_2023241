@@ -10,6 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using DQY5G6_HFT_2023241.Repository;
+using DQY5G6_HFT_2023241.Models;
+using DQY5G6_HFT_2023241.Logic;
 
 namespace DQY5G6_HFT_2023241.Endpoint
 {
@@ -25,6 +28,15 @@ namespace DQY5G6_HFT_2023241.Endpoint
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<GameDbContext>();
+
+            services.AddTransient<IRepository<Developer>, DeveloperRepo>();
+            services.AddTransient<IRepository<Game>, GameRepo>();
+            services.AddTransient<IRepository<Launcher>, LauncherRepo>();
+
+            services.AddTransient<IDeveloperLogic, DeveloperLogic>();
+            services.AddTransient<IGameLogic, GameLogic>();
+            services.AddTransient<ILauncherLogic, LauncherLogic>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

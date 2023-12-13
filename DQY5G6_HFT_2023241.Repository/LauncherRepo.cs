@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DQY5G6_HFT_2023241.Repository
 {
-    internal class LauncherRepo : GenericRepository<Launcher>, IRepository<Launcher>
+    public class LauncherRepo : GenericRepository<Launcher>, IRepository<Launcher>
     {
         public LauncherRepo(GameDbContext ctx) : base(ctx) { }
 

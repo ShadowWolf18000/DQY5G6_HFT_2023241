@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DQY5G6_HFT_2023241.Repository
 {
-    internal class DeveloperRepo : GenericRepository<Developer>, IRepository<Developer>
+    public class DeveloperRepo : GenericRepository<Developer>, IRepository<Developer>
     {
         public DeveloperRepo(GameDbContext ctx) : base(ctx) { }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DQY5G6_HFT_2023241.Logic
 {
-    internal interface IDeveloperLogic
+    public interface IDeveloperLogic
     {
         void Create(Developer dev);
         void Delete(int id);

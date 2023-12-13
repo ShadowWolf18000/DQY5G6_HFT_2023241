@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DQY5G6_HFT_2023241.Logic
 {
-    internal interface IGameLogic
+    public interface IGameLogic
     {
         void Create(Game game);
         void Delete(int id);

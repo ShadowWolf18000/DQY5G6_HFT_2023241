@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DQY5G6_HFT_2023241.Logic
 {
-    internal interface ILauncherLogic
+    public interface ILauncherLogic
     {
         void Create(Launcher l);
         void Delete(int id);
