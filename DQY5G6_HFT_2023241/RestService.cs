@@ -140,10 +140,10 @@ namespace DQY5G6_HFT_2023241.Client
 
         // Non-CRUDs
 
-        public List<T> GetDevelopersByLauncher<T>(string endpoint, string method, int id)
+        public List<T> GetDevelopersByLauncher<T>(string endpoint, string method, string launcherName)
         {
             List<T> items = new List<T>();
-            HttpResponseMessage response = client.GetAsync(endpoint + "/" + method + "/" + id.ToString()).GetAwaiter().GetResult();
+            HttpResponseMessage response = client.GetAsync(endpoint + "/" + method + "/" + launcherName).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
                 items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
@@ -155,10 +155,10 @@ namespace DQY5G6_HFT_2023241.Client
             }
             return items;
         }
-        public List<T> GetGamesByDeveloper<T>(string endpoint, string method, int id)
+        public List<T> GetGamesByDeveloper<T>(string endpoint, string method, string developerName)
         {
             List<T> items = new List<T>();
-            HttpResponseMessage response = client.GetAsync(endpoint + "/" + method + "/" + id.ToString()).GetAwaiter().GetResult();
+            HttpResponseMessage response = client.GetAsync(endpoint + "/" + method + "/" + developerName).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
                 items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
@@ -170,10 +170,10 @@ namespace DQY5G6_HFT_2023241.Client
             }
             return items;
         }
-        public List<T> GetTopGamesByDeveloperOnPlatform<T>(string endpoint, string method, int id)
+        public List<T> GetTopGamesByDeveloperOnPlatform<T>(string endpoint, string method, string devName, string launcherName)
         {
             List<T> items = new List<T>();
-            HttpResponseMessage response = client.GetAsync(endpoint + "/" + method + "/" + id.ToString()).GetAwaiter().GetResult();
+            HttpResponseMessage response = client.GetAsync(endpoint + "/" + method + "/" + devName + "/" + launcherName).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
                 items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
@@ -185,10 +185,10 @@ namespace DQY5G6_HFT_2023241.Client
             }
             return items;
         }
-        public List<T> GetGamesByRatingRange<T>(string endpoint, string method, int id)
+        public List<T> GetGamesByRatingRange<T>(string endpoint, string method, double minRating, double maxRating, string devName)
         {
             List<T> items = new List<T>();
-            HttpResponseMessage response = client.GetAsync(endpoint + "/" + method + "/" + id.ToString()).GetAwaiter().GetResult();
+            HttpResponseMessage response = client.GetAsync(endpoint + "/" + method + "/" + minRating.ToString() + "/" + maxRating.ToString() + "/" + devName).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
                 items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
@@ -200,10 +200,10 @@ namespace DQY5G6_HFT_2023241.Client
             }
             return items;
         }
-        public List<T> GetLaunchersForDeveloper<T>(string endpoint, string method, int id)
+        public List<T> GetLaunchersForDeveloper<T>(string endpoint, string method, string devName)
         {
             List<T> items = new List<T>();
-            HttpResponseMessage response = client.GetAsync(endpoint + "/" + method + "/" + id.ToString()).GetAwaiter().GetResult();
+            HttpResponseMessage response = client.GetAsync(endpoint + "/" + method + "/" + devName).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
                 items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
