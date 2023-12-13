@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Linq;
-using System.Transactions;
 using ConsoleTools;
-using DQY5G6_HFT_2023241.Client;
 using DQY5G6_HFT_2023241.Models;
 using System.Collections.Generic;
 
 // TÁVOLÍTSD EL A FÜGGŐSÉGEKET A VÉSŐ COMMIT ELŐTT
-namespace DQY5G6_HFT_2023241
+namespace DQY5G6_HFT_2023241.Client
 {
     internal class Program
     {
@@ -15,9 +13,44 @@ namespace DQY5G6_HFT_2023241
 
         static void Main(string[] args)
         {
-                
+            rest = new RestService("http://localhost:37523/", "developer");
+
+            var developerSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => List("Developer"))
+                .Add("Create", () => Create("Developer"))
+                .Add("Delete", () => Delete("Developer"))
+                .Add("Update", () => Update("Developer"))
+                .Add("DevelopersByLauncher", () => DevelopersByLauncher("DeveloperNonCrud"))
+                .Add("Exit", ConsoleMenu.Close);
+
+            var gameSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => List("Game"))
+                .Add("Create", () => Create("Game"))
+                .Add("Delete", () => Delete("Game"))
+                .Add("Update", () => Update("Game"))
+                .Add("TopGamesByDeveloperOnPlatform", () => TopGamesByDeveloperOnPlatform("GameNonCrud"))
+                .Add("GamesByRatingRange", () => GamesByRatingRange("GameNonCrud"))
+                .Add("LaunchersForDeveloper", () => LaunchersForDeveloper("GameNonCrud"))
+                .Add("GamesByDeveloper", () => GamesByDeveloper("GameNonCrud"))
+                .Add("Exit", ConsoleMenu.Close);
+
+            var launcherSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => List("Launcher"))
+                .Add("Create", () => Create("Launcher"))
+                .Add("Delete", () => Delete("Launcher"))
+                .Add("Update", () => Update("Launcher"))
+                .Add("Exit", ConsoleMenu.Close);
+
+            var mainMenu = new ConsoleMenu(args, level: 0)
+                .Add("Developer", () => developerSubMenu.Show())
+                .Add("Game", () => gameSubMenu.Show())
+                .Add("Launcher", () => launcherSubMenu.Show())
+                .Add("Exit", ConsoleMenu.Close);
+
+            mainMenu.Show();
         }
 
+        // Helper
         static string TransformToSingleLine(List<string> raw)
         {
             string transformed = "";
@@ -35,6 +68,7 @@ namespace DQY5G6_HFT_2023241
             return transformed;
         }
 
+        // CRUDs
         static void Create(string entity)
         {
             try
@@ -263,9 +297,9 @@ namespace DQY5G6_HFT_2023241
             try
             {
                 Console.WriteLine("Enter value for minimum rating: ");
-                double min = Convert.ToDouble(Console.ReadLine());
+                string min = Console.ReadLine();
                 Console.WriteLine("Enter value for maximum rating: ");
-                double max = Convert.ToDouble(Console.ReadLine());
+                string max = Console.ReadLine();
                 Console.WriteLine("Enter the developer's name: ");
                 string devName = Console.ReadLine();
 

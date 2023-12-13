@@ -185,7 +185,7 @@ namespace DQY5G6_HFT_2023241.Client
             }
             return items;
         }
-        public List<T> GetGamesByRatingRange<T>(string endpoint, string method, double minRating, double maxRating, string devName)
+        public List<T> GetGamesByRatingRange<T>(string endpoint, string method, string minRating, string maxRating, string devName)
         {
             List<T> items = new List<T>();
             HttpResponseMessage response = client.GetAsync(endpoint + "/" + method + "/" + minRating.ToString() + "/" + maxRating.ToString() + "/" + devName).GetAwaiter().GetResult();
