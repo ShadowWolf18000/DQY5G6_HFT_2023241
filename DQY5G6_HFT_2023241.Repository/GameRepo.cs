@@ -21,7 +21,8 @@ namespace DQY5G6_HFT_2023241.Repository
             var old = Read(game.GameID);
             foreach (var property in old.GetType().GetProperties())
             {
-                property.SetValue(old, property.GetValue(game));
+                if (property.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                    property.SetValue(old, property.GetValue(game));
             }
             gameDbContext.SaveChanges();
         }

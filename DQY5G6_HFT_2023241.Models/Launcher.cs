@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace DQY5G6_HFT_2023241.Models
@@ -21,6 +22,7 @@ namespace DQY5G6_HFT_2023241.Models
         [StringLength(240)]
         public string Owner { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Game> Games { get; set; }
 
         public Launcher(string line)

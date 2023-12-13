@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace DQY5G6_HFT_2023241.Models
 {
@@ -22,8 +23,11 @@ namespace DQY5G6_HFT_2023241.Models
 
         [Range(0, 10)]
         public double Rating { get; set; }
-        
+
+        [JsonIgnore]
         public virtual Developer Developer { get; set; }
+
+        [JsonIgnore]
         public virtual Launcher Launcher { get; set; }
 
         public Game(string line)
