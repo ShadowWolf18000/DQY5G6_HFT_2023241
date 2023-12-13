@@ -103,7 +103,13 @@ namespace DQY5G6_HFT_2023241.Client
                         if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
                         {
                             Console.WriteLine($"{prop.Name}: ");
-                            raw.Add(Console.ReadLine());
+                            string line = Console.ReadLine();
+                            if (line.Length == 1 && prop.PropertyType == typeof(double))
+                            {
+                                line += ".0";
+                            }
+
+                            raw.Add(line);
                         }
                     }
                     string data = TransformToSingleLine(raw);
