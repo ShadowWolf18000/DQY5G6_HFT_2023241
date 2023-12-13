@@ -286,7 +286,7 @@ namespace DQY5G6_HFT_2023241.Client
                 }
                 else
                 {
-                    Console.WriteLine($"Games from {devName} on {launcherName} with ratings 9.4<");
+                    Console.WriteLine($"Games from {devName} on {launcherName} with ratings better than or equal to 8.5");
                     games.ForEach(x =>
                     {
                         Console.WriteLine($"{x.GameID}: {x.Title} | Rating: {x.Rating}");

@@ -101,13 +101,13 @@ namespace DQY5G6_HFT_2023241.Logic
                 .ToList();
         }
 
-        // Legkedveltebb játékok listája egy adott fejlesztő alapján, egy adott platformon: rating 9.5 vagy nagyobb
+        // Legkedveltebb játékok listája egy adott fejlesztő alapján, egy adott platformon: rating 8.5 vagy nagyobb
         public IEnumerable<Game> TopGamesByDeveloperOnPlatform(string developerName, string launcherName)
         {
             return repository.ReadAll()
                 .Where(g => g.Developer.DeveloperName == developerName)
                 .ToList()
-                .Where(g => g.Rating >= 9.5 && g.Launcher.LauncherName == launcherName)
+                .Where(g => g.Rating >= 8.5 && g.Launcher.LauncherName == launcherName)
                 .OrderByDescending(g => g.Rating)
                 .ToList();
         }
