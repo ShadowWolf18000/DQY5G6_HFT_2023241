@@ -3,8 +3,8 @@ using System.Linq;
 using ConsoleTools;
 using DQY5G6_HFT_2023241.Models;
 using System.Collections.Generic;
+using Microsoft.IdentityModel.Tokens;
 
-// TÁVOLÍTSD EL A FÜGGŐSÉGEKET A VÉSŐ COMMIT ELŐTT
 namespace DQY5G6_HFT_2023241.Client
 {
     internal class Program
@@ -13,6 +13,8 @@ namespace DQY5G6_HFT_2023241.Client
 
         static void Main(string[] args)
         {
+            // LaunchersForDeveloper: "Ubisoft" jó példa
+
             rest = new RestService("http://localhost:37523/", "developer");
 
             var developerSubMenu = new ConsoleMenu(args, level: 1)

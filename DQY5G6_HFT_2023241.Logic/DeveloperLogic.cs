@@ -55,7 +55,7 @@ namespace DQY5G6_HFT_2023241.Logic
             else
                 repository.Update(dev);
         }
-        
+
 
         // Összes fejlesztő kilistázása, akik fejlesztettek egy adott Launcherre
         public IEnumerable<Developer> DevelopersByLauncher(string launcherName)
