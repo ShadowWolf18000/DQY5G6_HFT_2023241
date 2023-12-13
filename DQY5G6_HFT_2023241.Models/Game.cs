@@ -23,10 +23,10 @@ namespace DQY5G6_HFT_2023241.Models
 
         [Range(0, 10)]
         public double Rating { get; set; }
-
+        
         [JsonIgnore]
         public virtual Developer Developer { get; set; }
-
+        
         [JsonIgnore]
         public virtual Launcher Launcher { get; set; }
 

@@ -21,7 +21,7 @@ namespace DQY5G6_HFT_2023241.Models
         
         [StringLength(240)]
         public string Owner { get; set; }
-
+        
         [JsonIgnore]
         public virtual ICollection<Game> Games { get; set; }
 

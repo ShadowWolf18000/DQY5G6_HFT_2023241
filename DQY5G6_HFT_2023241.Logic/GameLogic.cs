@@ -21,26 +21,56 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Create(Game game)
         {
-            if (game.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(game) == null))
-                throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
-            else
-                repository.Create(game);
+            try
+            {
+                if (game.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(game) == null))
+                {
+                    throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
+                }
+                else if (game.GameID < 0 || game.DeveloperID < 0 || game.LauncherID < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                else
+                {
+                    repository.Create(game);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void Delete(int id)
         {
-            if (id < 0)
-                throw new ArgumentOutOfRangeException("id");
-            else
-                repository.Delete(id);
+            try
+            {
+                if (id < 0)
+                    throw new ArgumentOutOfRangeException("id");
+                else
+                    repository.Delete(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
 
         public Game Read(int id)
         {
-            if (id < 0)
-                throw new ArgumentOutOfRangeException("id");
-            else
-                return repository.Read(id);
+            try
+            {
+                if (id < 0)
+                    throw new ArgumentOutOfRangeException("id");
+                else
+                    return repository.Read(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public IQueryable<Game> ReadAll()
@@ -50,10 +80,17 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Update(Game game)
         {
-            if (game.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(game) == null))
-                throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
-            else
-                repository.Update(game);
+            try
+            {
+                if (game.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(game) == null))
+                    throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
+                else
+                    repository.Update(game);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         // Összes játék kilistázása adott fejlesztőtől

@@ -21,26 +21,49 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Create(Developer dev)
         {
-            if (dev.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(dev) == null))
-                throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
-            else
-                repository.Create(dev);
+            try
+            {
+                if (dev.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(dev) == null))
+                    throw new ArgumentNullException("A property in the object is null, therefore it cannot be added to the database.");
+                else if (dev.DeveloperID < 0)
+                    throw new ArgumentOutOfRangeException(nameof(dev.DeveloperID));
+                else
+                    repository.Create(dev);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public void Delete(int id)
         {
-            if (id < 0)
-                throw new ArgumentOutOfRangeException("id");
-            else
-                repository.Delete(id);
+            try
+            {
+                if (id < 0)
+                    throw new ArgumentOutOfRangeException("id");
+                else
+                    repository.Delete(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public Developer Read(int id)
         {
-            if (id < 0)
-                throw new ArgumentOutOfRangeException("id");
-            else
-                return repository.Read(id);
+            try
+            {
+                if (id < 0)
+                    throw new ArgumentOutOfRangeException("id");
+                else
+                    return repository.Read(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public IQueryable<Developer> ReadAll()
@@ -50,10 +73,17 @@ namespace DQY5G6_HFT_2023241.Logic
 
         public void Update(Developer dev)
         {
-            if (dev.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(dev) == null))
-                throw new ArgumentNullException("A property in the object is null, therefore it cannot be updated!");
-            else
-                repository.Update(dev);
+            try
+            {
+                if (dev.GetType().GetProperties().Where(x => !x.GetMethod.IsVirtual).Any(x => x.GetValue(dev) == null))
+                    throw new ArgumentNullException("A property in the object is null, therefore it cannot be updated!");
+                else
+                    repository.Update(dev);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
 
