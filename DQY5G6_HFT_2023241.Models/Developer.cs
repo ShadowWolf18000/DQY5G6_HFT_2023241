@@ -37,5 +37,19 @@ namespace DQY5G6_HFT_2023241.Models
             
         }
 
+        public Developer(int developerID, string developerName, int foundingYear, ICollection<Game> games)
+        {
+            DeveloperID = developerID;
+            DeveloperName = developerName;
+            FoundingYear = foundingYear;
+            Games = games;
+        }
+
+        public Developer(int developerID, string developerName, int foundingYear)
+        {
+            DeveloperID = developerID;
+            DeveloperName = developerName;
+            FoundingYear = foundingYear;
+        }
     }
 }
