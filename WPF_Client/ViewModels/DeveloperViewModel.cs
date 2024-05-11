@@ -94,8 +94,6 @@ namespace WPF_Client
                     () => Developers.Update(SelectedDeveloper),
                     () => IsSomethingSelected == true
                     );
-
-
             }
         }
 
