@@ -168,7 +168,7 @@
                 VerticalContentAlignment="Center"
                 FontSize="12"
                 FontWeight="Bold"
-                Content="DeveloperID:"
+                Content="GameID:"
                 />
                 <TextBox
                 Grid.Row="1"
@@ -185,7 +185,7 @@
                 VerticalContentAlignment="Center"
                 FontSize="12"
                 FontWeight="Bold"
-                Content="Name:"
+                Content="Title:"
                 />
                 <TextBox
                 Grid.Row="3"
@@ -202,7 +202,7 @@
                 VerticalContentAlignment="Center"
                 FontSize="12"
                 FontWeight="Bold"
-                Content="Founding Year:"
+                Content="DeveloperID:"
                 />
                 <TextBox
                 Grid.Row="5"
@@ -219,7 +219,7 @@
                 VerticalContentAlignment="Center"
                 FontSize="12"
                 FontWeight="Bold"
-                Content="Founding Year:"
+                Content="LauncherID:"
                 />
                 <TextBox
                 Grid.Row="7"
@@ -236,7 +236,7 @@
                 VerticalContentAlignment="Center"
                 FontSize="12"
                 FontWeight="Bold"
-                Content="Founding Year:"
+                Content="Rating:"
                 />
                 <TextBox
                 Grid.Row="9"
