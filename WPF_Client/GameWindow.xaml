@@ -89,8 +89,8 @@
             Grid.ColumnSpan="5"
             HorizontalContentAlignment="Stretch"
             Background="#E1AFD1"
-            ItemsSource="{Binding }"
-            SelectedItem="{Binding }"
+            ItemsSource="{Binding Games}"
+            SelectedItem="{Binding SelectedGame}"
             ScrollViewer.VerticalScrollBarVisibility="Hidden">
 
                 <ListBox.ItemTemplate>
@@ -105,35 +105,35 @@
                             </Grid.ColumnDefinitions>
                             <Label
                             Grid.Column="0"
-                            Content="{Binding }"
+                            Content="{Binding GameID}"
                             Foreground="#FFE6E6"
                             FontSize="14"
                             FontWeight="Bold"
                             />
                             <Label
                             Grid.Column="1"
-                            Content="{Binding }"
+                            Content="{Binding Title}"
                             Foreground="#FFE6E6"
                             FontSize="14"
                             FontWeight="Bold"
                             />
                             <Label
                             Grid.Column="2"
-                            Content="{Binding }"
+                            Content="{Binding DeveloperID}"
                             Foreground="#FFE6E6"
                             FontSize="14"
                             FontWeight="Bold"
                             />
                             <Label
                             Grid.Column="3"
-                            Content="{Binding }"
+                            Content="{Binding LauncherID}"
                             Foreground="#FFE6E6"
                             FontSize="14"
                             FontWeight="Bold"
                             />
                             <Label
                             Grid.Column="4"
-                            Content="{Binding }"
+                            Content="{Binding Rating}"
                             Foreground="#FFE6E6"
                             FontSize="14"
                             FontWeight="Bold"
@@ -175,7 +175,7 @@
                 Background="Transparent"
                 Foreground="#7469B6"
                 VerticalContentAlignment="Center"
-                Text="{Binding }"
+                Text="{Binding SelectedGame.GameID}"
                 />
 
                 <Label
@@ -192,7 +192,7 @@
                 Background="Transparent"
                 Foreground="#7469B6"
                 VerticalContentAlignment="Center"
-                Text="{Binding }"
+                Text="{Binding SelectedGame.Title}"
                 />
 
                 <Label
@@ -209,7 +209,7 @@
                 Background="Transparent"
                 Foreground="#7469B6"
                 VerticalContentAlignment="Center"
-                Text="{Binding }"
+                Text="{Binding SelectedGame.DeveloperID}"
                 />
 
                 <Label
@@ -226,7 +226,7 @@
                 Background="Transparent"
                 Foreground="#7469B6"
                 VerticalContentAlignment="Center"
-                Text="{Binding }"
+                Text="{Binding SelectedGame.LauncherID}"
                 />
 
                 <Label
@@ -243,7 +243,7 @@
                 Background="Transparent"
                 Foreground="#7469B6"
                 VerticalContentAlignment="Center"
-                Text="{Binding }"
+                Text="{Binding SelectedGame.Rating}"
                 />
                 
                 <Button
@@ -253,7 +253,7 @@
                 FontSize="18"
                 FontWeight="Bold"
                 Content="Create"
-                Command="{Binding }"
+                Command="{Binding CreateGameCommand}"
                 />
                 <Button
                 Grid.Row="11"
@@ -262,7 +262,7 @@
                 FontSize="18"
                 FontWeight="Bold"
                 Content="Delete"
-                Command="{Binding }"
+                Command="{Binding DeleteGameCommand}"
                 />
                 <Button
                 Grid.Row="12"
@@ -271,7 +271,7 @@
                 FontSize="18"
                 FontWeight="Bold"
                 Content="Update"
-                Command="{Binding }"
+                Command="{Binding UpdateGameCommand}"
                 />
             </Grid>
         </Border>

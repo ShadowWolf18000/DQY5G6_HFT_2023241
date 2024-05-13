@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using DQY5G6_HFT_2023241.Repository;
 using DQY5G6_HFT_2023241.Models;
 using DQY5G6_HFT_2023241.Logic;
+using DQY5G6_HFT_2023241.Endpoint.Services;
 
 namespace DQY5G6_HFT_2023241.Endpoint
 {
@@ -38,6 +39,8 @@ namespace DQY5G6_HFT_2023241.Endpoint
             services.AddTransient<IGameLogic, GameLogic>();
             services.AddTransient<ILauncherLogic, LauncherLogic>();
 
+            services.AddSignalR();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -62,6 +65,7 @@ namespace DQY5G6_HFT_2023241.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("hub");
             });
         }
     }

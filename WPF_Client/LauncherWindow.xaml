@@ -65,8 +65,8 @@
             Grid.ColumnSpan="3"
             HorizontalContentAlignment="Stretch"
             Background="#E1AFD1"
-            ItemsSource="{Binding }"
-            SelectedItem="{Binding }"
+            ItemsSource="{Binding Launchers}"
+            SelectedItem="{Binding SelectedLauncher}"
             ScrollViewer.VerticalScrollBarVisibility="Hidden">
 
                 <ListBox.ItemTemplate>
@@ -79,21 +79,21 @@
                             </Grid.ColumnDefinitions>
                             <Label
                             Grid.Column="0"
-                            Content="{Binding }"
+                            Content="{Binding LauncherID}"
                             Foreground="#FFE6E6"
                             FontSize="14"
                             FontWeight="Bold"
                             />
                             <Label
                             Grid.Column="1"
-                            Content="{Binding }"
+                            Content="{Binding LauncherName}"
                             Foreground="#FFE6E6"
                             FontSize="14"
                             FontWeight="Bold"
                             />
                             <Label
                             Grid.Column="2"
-                            Content="{Binding }"
+                            Content="{Binding Owner}"
                             Foreground="#FFE6E6"
                             FontSize="14"
                             FontWeight="Bold"
@@ -131,7 +131,7 @@
                 Background="Transparent"
                 Foreground="#7469B6"
                 VerticalContentAlignment="Center"
-                Text="{Binding }"
+                Text="{Binding SelectedLauncher.LauncherID}"
                 />
 
                 <Label
@@ -148,7 +148,7 @@
                 Background="Transparent"
                 Foreground="#7469B6"
                 VerticalContentAlignment="Center"
-                Text="{Binding }"
+                Text="{Binding SelectedLauncher.LauncherName}"
                 />
 
                 <Label
@@ -165,7 +165,7 @@
                 Background="Transparent"
                 Foreground="#7469B6"
                 VerticalContentAlignment="Center"
-                Text="{Binding }"
+                Text="{Binding SelectedLauncher.Owner}"
                 />
                 
                 <Button
@@ -175,7 +175,7 @@
                 FontSize="18"
                 FontWeight="Bold"
                 Content="Create"
-                Command="{Binding }"
+                Command="{Binding CreateLauncherCommand}"
                 />
                 <Button
                 Grid.Row="7"
@@ -184,7 +184,7 @@
                 FontSize="18"
                 FontWeight="Bold"
                 Content="Delete"
-                Command="{Binding }"
+                Command="{Binding DeleteLauncherCommand}"
                 />
                 <Button
                 Grid.Row="8"
@@ -193,7 +193,7 @@
                 FontSize="18"
                 FontWeight="Bold"
                 Content="Update"
-                Command="{Binding }"
+                Command="{Binding UpdateLauncherCommand}"
                 />
             </Grid>
         </Border>
