@@ -14,25 +14,24 @@ namespace WPF_Client
 {
     class DeveloperViewModel : ObservableRecipient
     {
-		private int developerID; public int DeveloperID
-		{
-			get { return developerID; }
-			set { SetProperty(ref developerID, value); }
-		}
-		private string developerName; public string DeveloperName
-		{
-			get { return developerName; }
-			set { SetProperty(ref developerName, value); }
-		}
-		private int foundingYear; public int FoundingYear
-		{
-			get { return foundingYear; }
-			set { SetProperty(ref foundingYear, value); }
-		}
+		//private int developerID; public int DeveloperID
+		//{
+		//	get { return developerID; }
+		//	set { SetProperty(ref developerID, value); }
+		//}
+		//private string developerName; public string DeveloperName
+		//{
+		//	get { return developerName; }
+		//	set { SetProperty(ref developerName, value); }
+		//}
+		//private int foundingYear; public int FoundingYear
+		//{
+		//	get { return foundingYear; }
+		//	set { SetProperty(ref foundingYear, value); }
+		//}
 
         public bool IsSomethingSelected { get; set; } = false;
         public RestCollection<Developer> Developers { get; set; }
-        public RestCollection<Launcher> Launchers { get; set; }
         public RestCollection<Game> Games { get; set; }
 
         private Developer selectedDeveloper;
@@ -44,9 +43,9 @@ namespace WPF_Client
                 if (value != null)
                 {
                     selectedDeveloper = new Developer(value.DeveloperID, value.DeveloperName, value.FoundingYear, value.Games);
-                    DeveloperID = value.DeveloperID;
-                    DeveloperName = value.DeveloperName;
-                    FoundingYear = value.FoundingYear;
+                    //DeveloperID = value.DeveloperID;
+                    //DeveloperName = value.DeveloperName;
+                    //FoundingYear = value.FoundingYear;
 
                     IsSomethingSelected = true;
                     OnPropertyChanged();
@@ -67,23 +66,21 @@ namespace WPF_Client
 
         public DeveloperViewModel() { }
 
-        public DeveloperViewModel(RestCollection<Developer> developers, RestCollection<Launcher> launchers, RestCollection<Game> games)
+        public DeveloperViewModel(RestCollection<Developer> developers, RestCollection<Game> games)
         {
             if (!IsInDesignMode)
             {
-                Developers = developers;
-                Launchers = launchers;
+                Developers = developers;;
                 Games = games;
 
                 CreateDeveloperCommand = new RelayCommand(
-                    () => Developers.Add(new Developer(SelectedDeveloper.DeveloperID, SelectedDeveloper.DeveloperName, SelectedDeveloper.FoundingYear)));
+                    () => Developers.Add(new Developer(SelectedDeveloper.DeveloperID, SelectedDeveloper.DeveloperName, SelectedDeveloper.FoundingYear, SelectedDeveloper.Games)));
                 // ICollection<Game>??
 
                 DeleteDeveloperCommand = new RelayCommand(
                     async ()=>
                     {
                         await Developers.Delete(SelectedDeveloper.DeveloperID);
-                        await Launchers.Refresh();
                         await Games.Refresh();
                         IsSomethingSelected = false;
                     },
@@ -96,17 +93,6 @@ namespace WPF_Client
                     );
             }
         }
-
-
-
-
-
-
-
-
-
-
-
 
         public static bool IsInDesignMode
         {

@@ -44,5 +44,15 @@ namespace DQY5G6_HFT_2023241.Models
         {
             
         }
+        public Game(int gameID, string title, int developerID, int launcherID, double rating, Developer developer, Launcher launcher)
+        {
+            GameID = gameID;
+            Title = title;
+            DeveloperID = developerID;
+            LauncherID = launcherID;
+            Rating = rating;
+            Developer = developer;
+            Launcher = launcher;
+        }
     }
 }
