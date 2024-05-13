@@ -9,6 +9,6 @@ namespace WPF_Client
 {
     interface IDeveloperService
     {
-        public void Open(RestCollection<Game> games);
+        public void Open(RestCollection<Developer> developers, RestCollection<Game> games);
     }
 }

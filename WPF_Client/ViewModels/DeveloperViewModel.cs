@@ -14,7 +14,6 @@ namespace WPF_Client
 {
     class DeveloperViewModel : ObservableRecipient
     {
-
         public bool IsSomethingSelected { get; set; } = false;
         public RestCollection<Developer> Developers { get; set; }
         public RestCollection<Game> Games { get; set; }

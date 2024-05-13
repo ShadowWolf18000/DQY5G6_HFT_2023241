@@ -8,6 +8,6 @@ namespace WPF_Client
 {
     interface ILauncherService
     {
-        public void Open(RestCollection<Game> games);
+        public void Open(RestCollection<Launcher> launchers, RestCollection<Game> games);
     }
 }

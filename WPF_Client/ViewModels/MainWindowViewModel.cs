@@ -51,15 +51,15 @@ namespace WPF_Client
                 gameService = Ioc.Default.GetRequiredService<IGameService>();
 
                 GetDevelopersCommand = new RelayCommand(
-                    () => developerService.Open(Games),
+                    () => developerService.Open(Developers, Games),
                     () => true
                     );
                 GetLaunchersCommand = new RelayCommand(
-                    () => launcherService.Open(Games), 
+                    () => launcherService.Open(Launchers, Games), 
                     () => true
                     );
                 GetGamesCommand = new RelayCommand(
-                    () => gameService.Open(Developers, Launchers),
+                    () => gameService.Open(Games, Developers, Launchers),
                     () => true
                     );
             }

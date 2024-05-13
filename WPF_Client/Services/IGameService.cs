@@ -10,6 +10,6 @@ namespace WPF_Client
 {
     interface IGameService
     {
-        public void Open(RestCollection<Developer> developers, RestCollection<Launcher> launchers);
+        public void Open(RestCollection<Game> games, RestCollection<Developer> developers, RestCollection<Launcher> launchers);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DQY5G6_HFT_2023241.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,9 @@ namespace WPF_Client
     /// </summary>
     public partial class DeveloperWindow : Window
     {
-        public DeveloperWindow()
+        public DeveloperWindow(RestCollection<Developer> developers, RestCollection<Game> games)
         {
+            DataContext = new DeveloperViewModel(developers, games);
             InitializeComponent();
         }
     }
