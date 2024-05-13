@@ -14,32 +14,6 @@ namespace WPF_Client
 {
     class GameViewModel : ObservableRecipient
     {
-		//private int gameID; public int GameId
-		//{
-		//	get { return gameID; }
-		//	set { gameID = value; }
-		//}
-		//private string title; public string Title
-		//{
-		//	get { return title; }
-		//	set { title = value; }
-		//}
-		//private int developerID; public int DeveloperID
-		//{
-		//	get { return developerID; }
-		//	set { developerID = value; }
-		//}
-		//private int launcherID; public int LauncherID
-		//{
-		//	get { return launcherID; }
-		//	set { launcherID = value; }
-		//}
-		//private double rating; public double Rating
-		//{
-		//	get { return rating; }
-		//	set { rating = value; }
-		//}
-
         public bool IsSomethingSelected { get; set; } = false;
         public RestCollection<Developer> Developers { get; set; }
         public RestCollection<Launcher> Launchers { get; set; }

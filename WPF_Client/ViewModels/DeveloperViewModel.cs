@@ -14,21 +14,6 @@ namespace WPF_Client
 {
     class DeveloperViewModel : ObservableRecipient
     {
-		//private int developerID; public int DeveloperID
-		//{
-		//	get { return developerID; }
-		//	set { SetProperty(ref developerID, value); }
-		//}
-		//private string developerName; public string DeveloperName
-		//{
-		//	get { return developerName; }
-		//	set { SetProperty(ref developerName, value); }
-		//}
-		//private int foundingYear; public int FoundingYear
-		//{
-		//	get { return foundingYear; }
-		//	set { SetProperty(ref foundingYear, value); }
-		//}
 
         public bool IsSomethingSelected { get; set; } = false;
         public RestCollection<Developer> Developers { get; set; }
@@ -102,6 +87,5 @@ namespace WPF_Client
                 return (bool)DependencyPropertyDescriptor.FromProperty(prop, typeof(FrameworkElement)).Metadata.DefaultValue;
             }
         }
-
     }
 }

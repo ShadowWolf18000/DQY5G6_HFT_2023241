@@ -36,5 +36,13 @@ namespace DQY5G6_HFT_2023241.Models
         {
             
         }
+
+        public Launcher(int launcherID, string launcherName, string owner, ICollection<Game> games)
+        {
+            LauncherID = launcherID;
+            LauncherName = launcherName;
+            Owner = owner;
+            Games = games;
+        }
     }
 }
