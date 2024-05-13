@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WPF_Client
 {
-    class GameViaWindow
+    class GameViaWindow : IGameService
     {
     }
 }
