@@ -18,7 +18,7 @@
     },
     "JSClient": {
       "commandName": "Project",
-      "dotnetRunMessages": "true",
+      "dotnetRunMessages": true, // "true"
       "launchBrowser": true,
       "launchUrl": "index.html",
       "applicationUrl": "http://localhost:5000",

@@ -1,2 +1,7 @@
 ﻿body {
+
+}
+.tablewindow{
+    display: none;
+    flex-direction: row;
 }

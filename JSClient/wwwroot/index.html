@@ -1,17 +1,86 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <!-- REFRESH FOR DEVELOPMENT PURPOSES ONLY -->
+    <!--<meta charset="utf-8" http-equiv="refresh" content="2" />-->
+    <!--<script type="text/javascript" src="https://livejs.com/live.js"></script>-->
+    <meta charset="utf-8">
+
     <title>UI</title>
+    <!-- <link rel="stylesheet" href="reset.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
+    <h1>JS Client</h1>
+    <h3>
+        <button onclick="displayDevelopers()">Developers</button>
+        <button onclick="displayLaunchers()">Launchers</button>
+        <button onclick="displayGames()">Games</button>
+    </h3>
 
+    <div class="tablewindow" id="developerwindow">
+        <div class="table">
+            <h2>Developers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>DeveloperID</th>
+                        <th>Name</th>
+                        <th>Founding Year</th>
+                    </tr>
+                </thead>
+                <tbody id="developers">
+                </tbody>
+            </table>
+        </div>
 
+        <div class="editor">
+            <div class="addDeveloper">
+                <h4>Add Developer</h4>
+                <label for="developerid">DeveloperID</label>
+                <input type="text" id="developerid" required>
+                <label for="developername">Name</label>
+                <input type="text" id="developername" required>
+                <label for="foundingyear">Founding Year</label>
+                <input type="text" id="foundingyear" required>
+                <button onclick="addDeveloper()">Add</button>
+            </div>
 
+            <div id="updateDeveloper">
+                <h4>Update Developer</h4>
+                <label for="developeridUpdate">DeveloperID</label>
+                <input type="text" id="developeridUpdate" required>
+                <label for="developernameUpdate">Name</label>
+                <input type="text" id="developernameUpdate" required>
+                <label for="foundingyearUpdate">Founding Year</label>
+                <input type="text" id="foundingyearUpdate" required>
+                <button onclick="updateDeveloper()">Update</button>
+            </div>
 
+            <div id="developersByLauncherWindow">
+                <div class="table">
+                    <h3>Developers who put games on chosen launcher</h3>
+                    <label for="searchbylauncher">Search a launcher's name</label>
+                    <input type="text" id="searchbylauncher" required>
+                    <button onclick="displayDevelopersByLauncher()">List</button>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody id="developersbylauncher">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
