@@ -64,8 +64,9 @@ namespace WPF_Client
 					async () =>
 					{
 						await Games.Delete(SelectedGame.GameID);
+						await Games.Refresh();
 						await Developers.Refresh();
-						await launchers.Refresh();
+						await Launchers.Refresh();
 						IsSomethingSelected = false;
 					},
 					() => IsSomethingSelected == true

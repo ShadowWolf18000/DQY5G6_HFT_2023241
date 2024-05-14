@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:WPF_Client"
         mc:Ignorable="d"
         Title="DeveloperWindow" Height="450" Width="800" Background="#FFE6E6">
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <local:DeveloperViewModel/>
-    </Window.DataContext>
+    </Window.DataContext>-->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -101,6 +101,7 @@
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+                
             </ListBox>
         </Grid>
         <Border Grid.Column="1" BorderBrush="#7469B6" BorderThickness="2, 0, 0, 0">

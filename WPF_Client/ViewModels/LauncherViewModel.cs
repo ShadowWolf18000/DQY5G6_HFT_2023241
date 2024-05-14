@@ -63,6 +63,7 @@ namespace WPF_Client
                     async () =>
                     {
                         await Launchers.Delete(SelectedLauncher.LauncherID);
+                        await Launchers.Refresh();
                         await Games.Refresh();
                         IsSomethingSelected = false;
                     },
@@ -75,7 +76,6 @@ namespace WPF_Client
                     );
             }
         }
-
         public static bool IsInDesignMode
         {
             get

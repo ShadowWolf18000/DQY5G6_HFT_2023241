@@ -42,9 +42,9 @@ namespace WPF_Client
         {
             if (!IsInDesignMode)
             {
+                Games = new RestCollection<Game>("http://localhost:37523/", "Game", "hub");
                 Developers = new RestCollection<Developer>("http://localhost:37523/", "Developer", "hub", new List<RestCollection> { Games });
                 Launchers = new RestCollection<Launcher>("http://localhost:37523/", "Launcher", "hub", new List<RestCollection> { Games });
-                Games = new RestCollection<Game>("http://localhost:37523/", "Game", "hub", new List<RestCollection> { Launchers, Developers });
 
                 developerService = Ioc.Default.GetRequiredService<IDeveloperService>();
                 launcherService = Ioc.Default.GetRequiredService<ILauncherService>();

@@ -65,6 +65,7 @@ namespace WPF_Client
                     async ()=>
                     {
                         await Developers.Delete(SelectedDeveloper.DeveloperID);
+                        await Developers.Refresh();
                         await Games.Refresh();
                         IsSomethingSelected = false;
                     },
