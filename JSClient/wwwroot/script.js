@@ -25,7 +25,7 @@ async function getDevelopers() {
 }
 
 async function getLaunchers() {
-    fetch('http://localhost:37523/Launcher')
+    await fetch('http://localhost:37523/Launcher')
         .then(x => x.json())
         .then(y => {
             launchers = y;
@@ -34,7 +34,7 @@ async function getLaunchers() {
 }
 
 async function getGames() {
-    fetch('http://localhost:37523/Game')
+    await fetch('http://localhost:37523/Game')
         .then(x => x.json())
         .then(y => {
             games = y;
@@ -43,7 +43,7 @@ async function getGames() {
 }
 
 async function getDevelopersByLauncher(launcherName) {
-    fetch('http://localhost:37523/DeveloperNonCrud/DevelopersByLauncher/' + launcherName)
+    await fetch('http://localhost:37523/DeveloperNonCrud/DevelopersByLauncher/' + launcherName)
         .then(x => x.json())
         .then(y => {
             developersByLauncher = y;
@@ -53,7 +53,7 @@ async function getDevelopersByLauncher(launcherName) {
 }
 
 async function getGamesByDeveloper(developerName) {
-    fetch('http://localhost:37523/GameNonCrud/GamesByDeveloper/' + developerName)
+    await fetch('http://localhost:37523/GameNonCrud/GamesByDeveloper/' + developerName)
         .then(x => x.json())
         .then(y => {
             gamesByDeveloper = y;
@@ -63,7 +63,7 @@ async function getGamesByDeveloper(developerName) {
 }
 
 async function getTopGamesByDeveloperOnPlatform(developerName, launcherName) {
-    fetch('http://localhost:37523/GameNonCrud/TopGamesByDeveloperOnPlatform/' + developerName + '/' + launcherName)
+    await fetch('http://localhost:37523/GameNonCrud/TopGamesByDeveloperOnPlatform/' + developerName + '/' + launcherName)
         .then(x => x.json())
         .then(y => {
             topGamesByDeveloperOnPlatform = y;
@@ -73,7 +73,7 @@ async function getTopGamesByDeveloperOnPlatform(developerName, launcherName) {
 }
 
 async function getGamesByRatingRange(minRating, maxRating, developerName) {
-    fetch('http://localhost:37523/GameNonCrud/GamesByRatingRange/' + minRating + '/' + maxRating + '/' + developerName)
+    await fetch('http://localhost:37523/GameNonCrud/GamesByRatingRange/' + minRating + '/' + maxRating + '/' + developerName)
         .then(x => x.json())
         .then(y => {
             gamesByRatingRange = y;
@@ -83,7 +83,7 @@ async function getGamesByRatingRange(minRating, maxRating, developerName) {
 }
 
 async function getLaunchersForDeveloper(developerName) {
-    fetch('http://localhost:37523/GameNonCrud/LaunchersForDeveloper/' + developerName)
+    await fetch('http://localhost:37523/GameNonCrud/LaunchersForDeveloper/' + developerName)
         .then(x => x.json())
         .then(y => {
             launchersForDeveloper = y;
