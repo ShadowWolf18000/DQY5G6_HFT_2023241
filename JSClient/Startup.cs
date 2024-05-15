@@ -16,7 +16,7 @@ namespace JSClient
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            //services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,11 +27,11 @@ namespace JSClient
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(x => x
-            .AllowCredentials()
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .WithOrigins("http://localhost:43342"));
+            //app.UseCors(x => x
+            //.AllowCredentials()
+            //.AllowAnyMethod()
+            //.AllowAnyHeader()
+            //.WithOrigins("http://localhost:43342"));
             // http://localhost:37523/
             // http://localhost:43342/
 

@@ -14,6 +14,8 @@ using DQY5G6_HFT_2023241.Repository;
 using DQY5G6_HFT_2023241.Models;
 using DQY5G6_HFT_2023241.Logic;
 using DQY5G6_HFT_2023241.Endpoint.Services;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
 
 namespace DQY5G6_HFT_2023241.Endpoint
 {
@@ -57,6 +59,23 @@ namespace DQY5G6_HFT_2023241.Endpoint
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DQY5G6_HFT_2023241.Endpoint v1"));
             }
+
+            //app.UseExceptionHandler(c => c.Run(async context =>
+            //{
+            //    var exception = context.Features
+            //    .Get<IExceptionHandlerPathFeature>()
+            //    .Error;
+            //    var response = new { Msg = exception.Message };
+            //    await context.Response.WriteAsJsonAsync(response);
+            //}));
+
+            app.UseCors(x => x
+                         .AllowCredentials()
+                         .AllowAnyMethod()
+                         .AllowAnyHeader()
+                         .WithOrigins("http://localhost:43342"));
+
+            app.UseStaticFiles();
 
             app.UseRouting();
 

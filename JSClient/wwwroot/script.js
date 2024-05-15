@@ -8,14 +8,19 @@ let topGamesByDeveloperOnPlatform = [];
 let gamesByRatingRange = [];
 let launchersForDeveloper = [];
 
+getDevelopers();
+getLaunchers();
+getGames();
+
 // API
 //#region API
 async function getDevelopers() {
-    fetch('http://localhost:37523/Developer')
+    await fetch('http://localhost:37523/Developer')
         .then(x => x.json())
         .then(y => {
             developers = y;
             console.log("developers GET successful");
+            console.log(developers); // for testing
         });
 }
 
@@ -95,6 +100,7 @@ async function getLaunchersForDeveloper(developerName) {
 //#region SignalR
 let connection = null;
 
+
 setupSignalR();
 
 function setupSignalR() {
@@ -164,7 +170,7 @@ async function start() {
 //#region Developers
 let developerUpdateId = 0;
 
-function displayDevelopers(){
+function displayDevelopers() {
     document.getElementById('developerwindow').style.display = 'flex';
     //document.getElementById('launcherwindow').style.display = 'none';
     //document.getElementById('gamewindow').style.display = 'none';
@@ -174,21 +180,25 @@ function displayDevelopers(){
     //document.getElementById('updateLauncher').style.display = 'none';
     //document.getElementById('updateGame').style.display = 'none';
 
-    return getDevelopers().then(() => {
+    getDevelopers();
+    listDevelopers();
+}
 
-        document.getElementById('developers').innerHTML = "";
-        developers.forEach(t => {
-            document.getElementById('developers').innerHTML +=
-                `<tr><td><input type="radio" name="selectDeveloperRadio" onclick='showUpdateDeveloper("${t.developerID}", "${t.developerName}", "${t.foundingYear}")'></input></td>` +
-                "</td><td>" + t.developerID +
-                "</td><td>" + t.developerName +
-                "</td><td>" + t.foundingYear +
-                `</td><td><button type="button" onclick='removeDeveloper(${t.developerID})'>Delete</button></td></tr>`;
-        })
+function listDevelopers() {
+    document.getElementById('developers').innerHTML = "";
+    developers.forEach(t => {
+        document.getElementById('developers').innerHTML +=
+            `<tr>
+                    <td><input type="radio" name="selectDeveloperRadio" onclick='showUpdateDeveloper("${t.developerID}", "${t.developerName}", "${t.foundingYear}")'></input></td>
+                    <td>${t.developerID}</td>
+                    <td>${t.developerName}</td>
+                    <td>${t.foundingYear}</td>
+                    <td><button type="button" onclick='removeDeveloper(${t.developerID})'>Delete</button></td>
+                </tr>`;
     });
 }
 
-function addDeveloper(){
+function addDeveloper() {
     let developerID = document.getElementById('developerid').value;
     let developerName = document.getElementById('developername').value;
     let foundingYear = document.getElementById('foundingyear').value;
@@ -218,14 +228,16 @@ async function removeDeveloper(id){
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: null
+    }).then(data => {
+        console.log(data);
+        console.log("developer DELETE successful");
+        return getDevelopers();
     })
-        .then(data => {
-            console.log(data);
-            displayDevelopers();
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+        .then(() =>
+            displayDevelopers())
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 }
 
 function updateDeveloper() {
