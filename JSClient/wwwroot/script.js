@@ -293,6 +293,21 @@ function doesDeveloperExist(id) {
     }
     return k;
 }
+
+async function displayDevelopersByLauncher() {
+    let launcherName = document.getElementById('searchbylauncher').value;
+    await getDevelopersByLauncher(launcherName);
+
+    document.getElementById('developersbylauncher').innerHTML = "";
+    developersByLauncher.forEach(t => {
+        document.getElementById('developersbylauncher').innerHTML +=
+            `<tr>
+                <td>${t.developerName}</td>
+            </tr>`;
+    });
+
+    getDevelopersByLauncher();
+}
 //#endregion
 
 // Launchers
@@ -564,6 +579,78 @@ function doesGameExist(id) {
 }
 // #endregion
 
+// Game NonCrud
+//#region Game NonCrud
+async function displayGamesByDeveloper() {
+    let developerName = document.getElementById('searchbydeveloper1').value;
+    await getGamesByDeveloper(developerName);
+
+    document.getElementById('gamesByDeveloper').innerHTML = "";
+    gamesByDeveloper.forEach(t => {
+        document.getElementById('gamesByDeveloper').innerHTML +=
+            `<tr>
+                <td>${t.title}</td>
+            </tr>`;
+    });
+
+    getGamesByDeveloper();
+}
+
+async function displayTopGamesByDeveloperOnPlatform() {
+    let developerName = document.getElementById('searchbydeveloper2').value;
+    let launcherName = document.getElementById('searchbylauncher1').value;
+    await getTopGamesByDeveloperOnPlatform(developerName, launcherName);
+
+    document.getElementById('topGamesByDeveloperOnPlatform').innerHTML = "";
+    topGamesByDeveloperOnPlatform.forEach(t => {
+        document.getElementById('topGamesByDeveloperOnPlatform').innerHTML +=
+            `<tr>
+                <td>${t.title}</td>
+                <td>${t.rating}</td>
+            </tr>`;
+    });
+
+    getTopGamesByDeveloperOnPlatform();
+}
+
+async function displayGamesByRatingRange() {
+    let developerName = document.getElementById('searchbydeveloper3').value;
+    let minRating = document.getElementById('minRating').value;
+    let maxRating = document.getElementById('maxRating').value;
+    
+    await getGamesByRatingRange(minRating, maxRating, developerName);
+
+    document.getElementById('gamesByRatingRange').innerHTML = "";
+    gamesByRatingRange.forEach(t => {
+        document.getElementById('gamesByRatingRange').innerHTML +=
+            `<tr>
+                <td>${t.title}</td>
+                <td>${t.rating}</td>
+            </tr>`;
+    });
+
+    getGamesByRatingRange();
+}
+
+async function displayLaunchersForDeveloper() {
+    let developerName = document.getElementById('searchbydeveloper4').value;
+
+    await getLaunchersForDeveloper(developerName);
+
+    document.getElementById('launchersForDeveloper').innerHTML = "";
+    launchersForDeveloper.forEach(t => {
+        document.getElementById('launchersForDeveloper').innerHTML +=
+            `<tr>
+                <td>${t.launcherName}</td>
+            </tr>`;
+    });
+
+    getLaunchersForDeveloper();
+}
+
+
+
+//#endregion
 
 
 

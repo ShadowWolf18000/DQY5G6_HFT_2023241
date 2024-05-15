@@ -1,6 +1,7 @@
 ﻿body {
     
 }
+
 .tablewindow{
     display: none;
     flex-direction: row;
@@ -28,3 +29,7 @@
     display: flex; 
 }
 
+.noncrud{
+    width: 300px;
+    margin: 50px;
+}

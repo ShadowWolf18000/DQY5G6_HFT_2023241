@@ -67,7 +67,7 @@
 
             <div id="developersByLauncherWindow">
                 <div class="table">
-                    <h3>Developers who put games on chosen launcher DOES NOT WORK YET</h3>
+                    <h3>Developers who put games on chosen launcher</h3>
                     <label for="searchbylauncher">Search a launcher's name</label>
                     <input type="text" id="searchbylauncher" required>
                     <button onclick="displayDevelopersByLauncher()">List</button>
@@ -187,9 +187,90 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
-    <script src="script.js"></script>
+        <!-- Non-Crud -->
+        <div id="gamesBydeveloperWindow">
+            <div class="noncrud">
+                <h3>List all games of a developer</h3>
+                <label for="searchbydeveloper1">Search a developer</label>
+                <input type="text" id="searchbydeveloper1" required>
+                <button onclick="displayGamesByDeveloper()">List</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gamesByDeveloper">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="topGamesByDeveloperOnPlatformWindow">
+            <div class="noncrud">
+                <h3>List games above 8.5 rating by a developer on a chosen platform</h3>
+                <label for="searchbydeveloper2">Search a developer</label>
+                <input type="text" id="searchbydeveloper2" required>
+                <label for="searchbylauncher1">Search a launcher</label>
+                <input type="text" id="searchbylauncher1" required>
+                <button onclick="displayTopGamesByDeveloperOnPlatform()">List</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody id="topGamesByDeveloperOnPlatform">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="gamesByRatingRangeWindow">
+            <div class="noncrud">
+                <h3>List all games of a developer within a rating interval</h3>
+                <label for="searchbydeveloper3">Search a developer</label>
+                <input type="text" id="searchbydeveloper3" required>
+                <label for="minRating">Minimum rating</label>
+                <input type="text" id="minRating" required>
+                <label for="maxRating">Maximum rating</label>
+                <input type="text" id="maxRating" required>
+                <button onclick="displayGamesByRatingRange()">List</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gamesByRatingRange">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="launchersForDeveloperWindow">
+            <div class="noncrud">
+                <h3>List all launchers your chosen developer put games on</h3>
+                <label for="searchbydeveloper4">Search a developer</label>
+                <input type="text" id="searchbydeveloper4" required>
+                <button onclick="displayLaunchersForDeveloper()">List</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Launcher's name'</th>
+                        </tr>
+                    </thead>
+                    <tbody id="launchersForDeveloper">
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+        <script src="script.js"></script>
 </body>
 </html>
