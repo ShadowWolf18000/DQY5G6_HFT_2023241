@@ -20,6 +20,7 @@
         <button onclick="displayGames()">Games</button>
     </h3>
 
+    <!-- Developer -->
     <div class="tablewindow" id="developerwindow">
         <div class="table">
             <h2>Developers</h2>
@@ -39,30 +40,34 @@
 
         <div class="editor">
             <div class="addDeveloper">
-                <h4>Add Developer</h4>
-                <label for="developerid">DeveloperID</label>
-                <input type="text" id="developerid" required>
-                <label for="developername">Name</label>
-                <input type="text" id="developername" required>
-                <label for="foundingyear">Founding Year</label>
-                <input type="text" id="foundingyear" required>
-                <button onclick="addDeveloper()">Add</button>
+                <div>
+                    <h4>Add Developer</h4>
+                    <label for="developerid">DeveloperID</label>
+                    <input type="text" id="developerid" required>
+                    <label for="developername">Name</label>
+                    <input type="text" id="developername" required>
+                    <label for="foundingyear">Founding Year</label>
+                    <input type="text" id="foundingyear" required>
+                    <button onclick="addDeveloper()">Add</button>
+                </div>
             </div>
 
             <div id="updateDeveloper">
-                <h4>Update Developer</h4>
-                <label for="developeridUpdate">DeveloperID</label>
-                <input type="text" id="developeridUpdate" required>
-                <label for="developernameUpdate">Name</label>
-                <input type="text" id="developernameUpdate" required>
-                <label for="foundingyearUpdate">Founding Year</label>
-                <input type="text" id="foundingyearUpdate" required>
-                <button onclick="updateDeveloper()">Update</button>
+                <div>
+                    <h4>Update Developer</h4>
+                    <label for="developeridUpdate">DeveloperID</label>
+                    <input type="text" id="developeridUpdate" required><br />
+                    <label for="developernameUpdate">Name</label>
+                    <input type="text" id="developernameUpdate" required><br />
+                    <label for="foundingyearUpdate">Founding Year</label>
+                    <input type="text" id="foundingyearUpdate" required><br />
+                    <button onclick="updateDeveloper()">Update</button>
+                </div>
             </div>
 
             <div id="developersByLauncherWindow">
                 <div class="table">
-                    <h3>Developers who put games on chosen launcher</h3>
+                    <h3>Developers who put games on chosen launcher DOES NOT WORK YET</h3>
                     <label for="searchbylauncher">Search a launcher's name</label>
                     <input type="text" id="searchbylauncher" required>
                     <button onclick="displayDevelopersByLauncher()">List</button>
@@ -75,6 +80,110 @@
                         <tbody id="developersbylauncher">
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Launcher -->
+    <div class="tablewindow" id="launcherwindow">
+        <div class="table">
+            <h2>Launchers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>LauncherID</th>
+                        <th>Name</th>
+                        <th>Owner</th>
+                    </tr>
+                </thead>
+                <tbody id="launchers">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="editor">
+            <div class="addLauncher">
+                <div>
+                    <h4>Add Launcher</h4>
+                    <label for="launcherid">LauncherID</label>
+                    <input type="text" id="launcherid" required>
+                    <label for="launchername">Name</label>
+                    <input type="text" id="launchername" required>
+                    <label for="owner">Owner</label>
+                    <input type="text" id="owner" required>
+                    <button onclick="addLauncher()">Add</button>
+                </div>
+            </div>
+
+            <div id="updateLauncher">
+                <div>
+                    <h4>Update Launcher</h4>
+                    <label for="launcheridUpdate">LauncherID</label>
+                    <input type="text" id="launcheridUpdate" required><br />
+                    <label for="launchernameUpdate">Name</label>
+                    <input type="text" id="launchernameUpdate" required><br />
+                    <label for="ownerUpdate">Owner</label>
+                    <input type="text" id="ownerUpdate" required><br />
+                    <button onclick="updateLauncher()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game -->
+    <div class="tablewindow" id="gamewindow">
+        <div class="table">
+            <h2>Games</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>GameID</th>
+                        <th>Title</th>
+                        <th>DeveloperID</th>
+                        <th>LauncherID</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody id="games">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="editor">
+            <div class="addGame">
+                <div>
+                    <h4>Add Game</h4>
+                    <label for="gameid">GameID</label>
+                    <input type="text" id="gameid" required>
+                    <label for="gametitle">Title</label>
+                    <input type="text" id="gametitle" required>
+                    <label for="game_developerid">DeveloperID</label>
+                    <input type="text" id="game_developerid" required>
+                    <label for="game_launcherid">LauncherID</label>
+                    <input type="text" id="game_launcherid" required>
+                    <label for="rating">Rating</label>
+                    <input type="text" id="rating" required>
+                    <button onclick="addGame()">Add</button>
+                </div>
+            </div>
+
+            <div id="updateGame">
+                <div>
+                    <h4>Update Game</h4>
+                    <label for="gameidUpdate">GameID</label>
+                    <input type="text" id="gameidUpdate" required>
+                    <label for="gametitleUpdate">Title</label>
+                    <input type="text" id="gametitleUpdate" required>
+                    <label for="game_developeridUpdate">DeveloperID</label>
+                    <input type="text" id="game_developeridUpdate" required>
+                    <label for="game_launcheridUpdate">LauncherID</label>
+                    <input type="text" id="game_launcheridUpdate" required>
+                    <label for="ratingUpdate">Rating</label>
+                    <input type="text" id="ratingUpdate" required>
+                    <button onclick="updateGame()">Update</button>
                 </div>
             </div>
         </div>

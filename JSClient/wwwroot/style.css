@@ -1,7 +1,30 @@
 ﻿body {
-
+    
 }
 .tablewindow{
     display: none;
     flex-direction: row;
 }
+
+.addDeveloper{
+    width: 500px;
+    margin: 20px;
+    display: flex;
+}
+
+#updateDeveloper {
+    width: 500px;
+    margin: 20px;
+    display: flex;
+}
+
+#developersByLauncherWindow {
+    width: 500px;
+    margin: 70px;
+    display: flex;
+}
+
+.editor{
+    display: flex; 
+}
+
